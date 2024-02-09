@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo [Final]</title>
+    <link rel="stylesheet" href="../base.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+        integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+        crossorigin="anonymous"
+        defer
+    ></script>
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-inputs">
+            <label>Input A:<br>
+                <input
+                    id="input0"
+                    type="range"
+                    min="-1"
+                    max="1"
+                    step="0.001"
+                    value="0"
+                />
+            </label>
+
+            <label>Input B:<br>
+                <input
+                    id="input1"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.001"
+                    value="0"
+                />
+            </label>
+
+            <label>Input C:<br>
+                <input
+                    id="input2"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.001"
+                    value="0"
+                />
+            </label>
+
+            <label>Enable Weird:<br>
+                <input
+                    id="checkbox"
+                    type="checkbox"
+                />
+            </label>
+        </div>
+
+        <div class="grid-output">
+            <canvas
+                id="canvas"
+                width="800"
+                height="600"
+            ></canvas>
+        </div>
+    </div>
+    <script type="module" src="demo-final/demo-final.js"></script>
+</body>
+</html>

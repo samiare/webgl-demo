@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distortion</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-inputs">
+            <div class="grid-inputs-stack">
+                <label>Image:
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/*"
+                    />
+                </label>
+                <label>Video:
+                    <input
+                        id="videoInput"
+                        type="file"
+                        accept="video/*"
+                    />
+                </label>
+            </div>
+            <div class="grid-inputs-stack">
+                <label>Wave Amount X:
+                    <input
+                        id="waveAmtXInput"
+                        type="range"
+                        min="-1"
+                        max="1"
+                        step="0.01"
+                        value="0"
+                    />
+                </label>
+                <label>Wave Count X:
+                    <input
+                        id="waveCountXInput"
+                        type="range"
+                        min="0"
+                        max="5"
+                        step="0.01"
+                        value="1"
+                    />
+                </label>
+            </div>
+            <div class="grid-inputs-stack">
+                <label>Wave Amount Y:
+                    <input
+                        id="waveAmtYInput"
+                        type="range"
+                        min="-1"
+                        max="1"
+                        step="0.01"
+                        value="0"
+                    />
+                </label>
+                <label>Wave Count Y:
+                    <input
+                        id="waveCountYInput"
+                        type="range"
+                        min="0"
+                        max="5"
+                        step="0.01"
+                        value="1"
+                    />
+                </label>
+            </div>
+            <div class="grid-inputs-stack">
+                <label>Interleave:
+                    <input
+                        id="interleaveInput"
+                        type="checkbox"
+                    />
+                </label>
+                <button
+                    id="resetButton"
+                >Reset waves</button>
+            </div>
+        </div>
+
+        <div class="grid-output">
+            <canvas id="canvas"></canvas>
+        </div>
+
+    <script type="module" src="2d/2d.js"></script>
+</body>
+</html>

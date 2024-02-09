@@ -1,0 +1,84 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #ddd;
+    font-family: ui-monospace,
+        Menlo, Monaco,
+        "Cascadia Mono",
+        "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        "Courier New",
+        monospace;
+}
+
+.grid {
+    display: grid;
+    gap: 12px;
+    width: min-content;
+    padding: 24px;
+    margin-inline: auto;
+    box-sizing: border-box;
+    grid-template-columns: min-content;
+    grid-template-rows: max-content 1fr;
+    justify-items: stretch;
+}
+
+.grid-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.grid-inputs > * {
+    flex: 1;
+}
+
+.grid-inputs-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+input[type=range] {
+    width: 100%;
+}
+
+canvas {
+    width: 800px;
+    height: 600px;
+    image-rendering: pixelated;
+}
+
+.grid-inputs > * {
+    flex: 1;
+}
+
+h1 {
+    font-size: 3.4em;
+}
+
+ul {
+    margin:0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: none;
+}
+
+li {
+    white-space: nowrap;
+    margin-block: 1em;
+    font-size: 1.3em;
+}
+
+li a {
+    color: inherit;
+}
+
+li a:hover {
+    text-decoration: none;
+}
