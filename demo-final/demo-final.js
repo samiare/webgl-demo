@@ -176,7 +176,7 @@ gl.uniform1i(checkboxLoc, checkbox.checked)
 const texture0 = createTexture(gl, 0, '../assets/feathers.png')
 gl.uniform1i(texture0Loc, 0)
 
-const texture1 = createTexture(gl, 1, '../assets/steel.png')
+const texture1 = createTexture(gl, 1, '../assets/bricks.png')
 gl.uniform1i(texture1Loc, 1)
 
 

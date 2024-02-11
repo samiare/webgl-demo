@@ -5,8 +5,11 @@
 export const vertexSource = `
 precision mediump float;
 
-uniform mat4 uModelViewMatrix;      // Transformation of the model from its origin
-uniform mat4 uProjectionMatrix;     // Transformation for the perspective camera
+uniform mat4 uModelViewMatrix;  // Transformation of the model from its origin
+uniform mat4 uProjectionMatrix; // Transformation for the perspective camera
+uniform float uSlider0;         // Value from -1.0 to 1.0
+uniform float uSlider1;         // Value from  0.0 to 1.0
+uniform float uSlider2;         // Value from  0.0 to 1.0
 uniform bool uCheckbox;
 
 attribute vec3 position;
@@ -16,18 +19,17 @@ attribute vec2 uv;
 
 varying vec3 vPosition;
 varying vec4 vColor;
-varying vec3 vNormal;
 varying vec2 vUv;
 
 void main(void) {
-    vec4 projectedPosition = uProjectionMatrix * uModelViewMatrix * vec4(position, 1.0);
+    vec4 projectedPosition =
+        uProjectionMatrix * uModelViewMatrix * vec4(position, 1.0);
 
     // The final position, in normalized space, of the vertex
     gl_Position = projectedPosition;
 
     // Pass these values to the fragment shader
     vColor = color;
-    vNormal = mat3(uModelViewMatrix) * normal;
     vUv = uv;
 }
 `
@@ -39,12 +41,17 @@ void main(void) {
 export const fragmentSource = `
 precision mediump float;
 
+uniform float uSlider0;         // Value from -1.0 to 1.0
+uniform float uSlider1;         // Value from  0.0 to 1.0
+uniform float uSlider2;         // Value from  0.0 to 1.0
+uniform sampler2D uTexture0;    // feathers.png
+uniform sampler2D uTexture1;    // bricks.png
+
 varying vec4 vColor;
-varying vec3 vNormal;
 varying vec2 vUv;
 
 void main(void) {
-    gl_FragColor = vColor;
+    gl_FragColor = texture2D(uTexture0, vUv);
 }
 `
 

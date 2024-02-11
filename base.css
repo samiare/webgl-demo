@@ -51,6 +51,8 @@ input[type=range] {
 canvas {
     width: 800px;
     height: 600px;
+    aspect-ratio: 8 / 6;
+    max-height: 90vh;
     image-rendering: pixelated;
 }
 

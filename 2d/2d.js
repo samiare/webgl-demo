@@ -3,14 +3,17 @@ import { createShaderProgram } from '../webgl-helpers.js'
 import { vertexSource, fragmentSource } from '../shaders/distortion.glsl.js'
 
 const canvas =          document.getElementById('canvas')
-const imageInput =      document.getElementById('imageInput')
-const videoInput =      document.getElementById('videoInput')
+const imageButton =     document.getElementById('imageButton')
+const videoButton =     document.getElementById('videoButton')
 const waveAmtXInput =   document.getElementById('waveAmtXInput')
 const waveAmtYInput =   document.getElementById('waveAmtYInput')
 const waveCountXInput = document.getElementById('waveCountXInput')
 const waveCountYInput = document.getElementById('waveCountYInput')
 const resetButton     = document.getElementById('resetButton')
 const interleaveInput = document.getElementById('interleaveInput')
+
+const video = document.createElement('video')
+let videoFrameCallback
 
 waveAmtXInput.dataset.default = waveAmtXInput.value
 waveAmtYInput.dataset.default = waveAmtYInput.value
@@ -69,8 +72,8 @@ gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
 
 // Set listeners ---------------------------------------------------------------
 
-imageInput.addEventListener('change', setImageTexture)
-videoInput.addEventListener('change', setVideoTexture)
+imageButton.addEventListener('click', setImageTexture)
+videoButton.addEventListener('click', setVideoTexture)
 waveAmtXInput.addEventListener('input', setWaveValue)
 waveAmtYInput.addEventListener('input', setWaveValue)
 waveCountXInput.addEventListener('input', setWaveCount)
@@ -94,8 +97,9 @@ function draw() {
 }
 
 function setImageTexture(event) {
+  video.cancelVideoFrameCallback(videoFrameCallback)
+
   const image = new Image()
-  const fr = new FileReader()
 
   image.addEventListener('load', () => {
     canvas.width = image.width
@@ -118,36 +122,25 @@ function setImageTexture(event) {
     draw()
   })
 
-  fr.addEventListener('load', (frEvent) => {
-    image.src = frEvent.target.result
-  })
-
-  fr.readAsDataURL(event.target.files[0])
+  image.src = '../assets/background.jpg'
 }
 
 function setVideoTexture() {
-  const video = document.createElement('video')
   video.setAttribute('autoplay', true)
   video.setAttribute('muted', true)
   video.setAttribute('loop', true)
   video.setAttribute('playsinline', true)
-
-  const fr = new FileReader()
 
   video.addEventListener('canplaythrough', () => {
     video.play()
     video.requestVideoFrameCallback(processFrame)
   })
 
-  fr.addEventListener('load', (frEvent) => {
-    video.src = frEvent.target.result
-    video.load()
-  })
-
-  fr.readAsDataURL(event.target.files[0])
+  video.src = '../assets/test.mp4'
+  video.load()
 
   function processFrame() {
-    video.requestVideoFrameCallback(processFrame)
+    videoFrameCallback = video.requestVideoFrameCallback(processFrame)
 
     gl.texImage2D(
       gl.TEXTURE_2D,    // Type of texture

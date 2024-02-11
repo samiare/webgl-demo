@@ -97,14 +97,14 @@ void main(void) {
     gl_FragColor = mix(
         gl_FragColor,
         vColor,
-        0.2
+        0.1
     );
 
     // Multiply by the shadowValue to apply shading to faces not towards camera
     gl_FragColor.rgb *= vec3(max(0.2, shadowValue / 2.0 + 0.5));
 
     // Discard pixels based on the slider
-    if (tex0.b <= uSlider2) {
+    if (1.0 - tex0.g <= uSlider2) {
         discard;
     }
 }

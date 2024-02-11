@@ -1,4 +1,10 @@
-import { vertexData, colorData, normalData, vertexIndices, uvData } from '../data/cube.js'
+import {
+  vertexData,
+  colorData,
+  normalData,
+  vertexIndices,
+  uvData
+} from '../data/cube.js'
 import { createShaderProgram, createTexture } from '../webgl-helpers.js'
 import { vertexSource, fragmentSource } from '../shaders/demo.glsl.js'
 
@@ -165,7 +171,7 @@ if (checkbox) gl.uniform1i(checkboxLoc, checkbox.checked)
 const texture0 = createTexture(gl, 0, '../assets/feathers.png')
 gl.uniform1i(texture0Loc, 0)
 
-const texture1 = createTexture(gl, 1, '../assets/steel.png')
+const texture1 = createTexture(gl, 1, '../assets/bricks.png')
 gl.uniform1i(texture1Loc, 1)
 
 
@@ -189,8 +195,8 @@ function draw(now) {
   now /= 1000
   deltaTime = now - previousTime
   previousTime = now
-  //rotation += deltaTime
-  rotation = 1.5
+  rotation += deltaTime
+  //rotation = 1.5
 
   const projectionMatrix = mat4.create()
   const modelViewMatrix = mat4.create()
