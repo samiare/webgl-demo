@@ -215,15 +215,15 @@ function draw(now) {
     100.0                                           // z-space far clipping
   )
 
-  // modelViewMatrix is the position of our cube. We can translate and rotate it
-  // here, similar to CSS transforms.
-
   // Move backwards in z-space
   mat4.translate(
-    modelViewMatrix,
-    modelViewMatrix,
+    projectionMatrix,
+    projectionMatrix,
     [-0.0, 0.0, -6.0]
   )
+
+  // modelViewMatrix is the position of our cube. We can translate and rotate it
+  // here, similar to CSS transforms.
 
   // Rotate around Z axis
   mat4.rotate(
